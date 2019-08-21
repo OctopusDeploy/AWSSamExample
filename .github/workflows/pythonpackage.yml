@@ -30,9 +30,6 @@ jobs:
         wget -O /opt/octo/octopus.zip https://download.octopusdeploy.com/octopus-tools/6.12.0/OctopusTools.6.12.0.portable.zip
         unzip /opt/octo/octopus.zip
         chmod +x /opt/octo/Octo
-        ls -la /home/runner/work/AWSSamExample
-        ls -la /home/runner/work/AWSSamExample/AWSSamExample
-        cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt
     - name: Pack Application
       run: >-
         /opt/octo/Octo pack .
