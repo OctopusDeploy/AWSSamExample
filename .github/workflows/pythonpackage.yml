@@ -26,7 +26,8 @@ jobs:
     - name: Pack Application
       uses: docker://octopusdeploy/octo:latest
       with:
-        args: pack . --basePath hello_world --id AwsSamLambda --version $(cat /github/workspace/version.txt) --format zip
+        run: /bin/bash
+        args: -c "dotnet /octo/Octo.dll pack . --basePath hello_world --id AwsSamLambda --version $(cat /github/workspace/version.txt) --format zip"
     - name: Push to Octopus
       uses: docker://octopusdeploy/octo:latest
       with:
