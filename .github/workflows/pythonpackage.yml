@@ -21,6 +21,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         cd hello_world
-        pip install -r requirements.txt
+        pip download -r requirements.txt
         unzip *.whl
         rm *.whl
