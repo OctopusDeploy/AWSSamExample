@@ -10,8 +10,7 @@ jobs:
     - name: Get Git Version
       uses: docker://gittools/gitversion:5.0.1-linux-fedora-27-netcoreapp2.1
       with:
-        run: /bin/sh
-        args: -c "/bin/dotnet /app/GitVersion.dll"
+        args: /app/GitVersion.dll
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
