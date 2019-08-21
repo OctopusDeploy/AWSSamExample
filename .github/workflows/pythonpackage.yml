@@ -27,4 +27,5 @@ jobs:
         ls -la
     - name: Push to Octopus
       uses: docker://octopusdeploy/octo:latest
-      run: octo pack . -id AwsSamLambda -version 1.0.0.0 -format zip
+      with:
+        args: pack . -id AwsSamLambda -version 1.0.0.0 -format zip
