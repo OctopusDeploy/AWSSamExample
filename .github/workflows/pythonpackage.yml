@@ -28,4 +28,4 @@ jobs:
     - name: Push to Octopus
       uses: docker://octopusdeploy/octo:latest
       with:
-        args: pack . -id AwsSamLambda -version 1.0.0.0 -format zip
+        args: pack . --basePath hello_world -id AwsSamLambda -version 1.0.0.0 -format zip
