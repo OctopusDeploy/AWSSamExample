@@ -25,7 +25,11 @@ jobs:
         unzip \*.whl
         rm *.whl
         ls -la
-    - name: Push to Octopus
+    - name: Pack Application
       uses: docker://octopusdeploy/octo:latest
       with:
         args: pack . --basePath hello_world --id AwsSamLambda --version 1.0.0.0 --format zip
+    - name: Push to Octopus
+      uses: docker://octopusdeploy/octo:latest
+      with:
+        args: push --server ${{ secrets.MATTC_URL }} --apiKey ${{ secrets.MATTC_API_KEY }} --package hello_world/AwsSamLambda.1.0.0.0.zip --overwrite-mode IgnoreIfExists
