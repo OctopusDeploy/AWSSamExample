@@ -34,6 +34,6 @@ jobs:
         ls -la /home/runner/work/AWSSamExample/AWSSamExample
         cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt
     - name: Pack Application
-      run: /opt/octo/Octo pack . --basePath /home/runner/work/AWSSamExample/hello_world --id AwsSamLambda --version $(cat /home/runner/work/AWSSamExample/version.txt) --format zip
+      run: /opt/octo/Octo pack . --basePath /home/runner/work/AWSSamExample/hello_world --id AwsSamLambda --version $(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt) --format zip
     - name: Push to Octopus
-      run: /opt/octo/Octo push --server ${{ secrets.MATTC_URL }} --apiKey ${{ secrets.MATTC_API_KEY }} --package /home/runner/work/AWSSamExample/AwsSamLambda.$(cat /home/runner/work/AWSSamExample/version.txt).zip --overwrite-mode IgnoreIfExists
+      run: /opt/octo/Octo push --server ${{ secrets.MATTC_URL }} --apiKey ${{ secrets.MATTC_API_KEY }} --package /home/runner/work/AWSSamExample/AwsSamLambda.$(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt).zip --overwrite-mode IgnoreIfExists
