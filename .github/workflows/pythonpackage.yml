@@ -26,8 +26,8 @@ jobs:
     - name: Pack Application
       uses: docker://octopusdeploy/octo:latest
       with:
-        args: pack . --basePath hello_world --id AwsSamLambda --version 1.0.0.0 --format zip
+        args: pack . --basePath hello_world --id AwsSamLambda --version $(cat /github/workspace/version.txt) --format zip
     - name: Push to Octopus
       uses: docker://octopusdeploy/octo:latest
       with:
-        args: push --server ${{ secrets.MATTC_URL }} --apiKey ${{ secrets.MATTC_API_KEY }} --package AwsSamLambda.1.0.0.0.zip --overwrite-mode IgnoreIfExists
+        args: push --server ${{ secrets.MATTC_URL }} --apiKey ${{ secrets.MATTC_API_KEY }} --package AwsSamLambda.$(cat /github/workspace/version.txt).zip --overwrite-mode IgnoreIfExists
