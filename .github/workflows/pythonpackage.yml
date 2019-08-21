@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Get Git Version
-      uses: docker://gittools/gitversion:5.0.2-beta1-18-linux-fedora-27-netcoreapp2.1
+      uses: docker://mcasperson/5.0.2-beta1-4-linux-centos-7-netcoreapp2.2
       with:
         args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_MajorMinorPatch > /github/workspace/version.txt\""
     - name: Set up Python 3.7
@@ -23,11 +23,14 @@ jobs:
         unzip \*.whl
         rm *.whl
         ls -la
+    - name: Extract Octopus Tools
+      run: |
+        mkdir /opt/octo
+        wget -O /opt/octo/octopus.zip https://download.octopusdeploy.com/octopus-tools/6.12.0/OctopusTools.6.12.0.portable.zip
+        unzip /opt/octo/octopus.zip
+        chmod +x /opt/octo/Octo
     - name: Pack Application
-      uses: docker://octopusdeploy/octo:latest
-      with:
-        args: pack . --basePath hello_world --id AwsSamLambda --version $(cat /github/workspace/version.txt) --format zip
+      run: /opt/octo/Octo pack . --basePath hello_world --id AwsSamLambda --version $(cat /github/workspace/version.txt) --format zip
     - name: Push to Octopus
       uses: docker://octopusdeploy/octo:latest
-      with:
-        args: push --server ${{ secrets.MATTC_URL }} --apiKey ${{ secrets.MATTC_API_KEY }} --package AwsSamLambda.$(cat /github/workspace/version.txt).zip --overwrite-mode IgnoreIfExists
+      run: /opt/octo/Octo push --server ${{ secrets.MATTC_URL }} --apiKey ${{ secrets.MATTC_API_KEY }} --package AwsSamLambda.$(cat /github/workspace/version.txt).zip --overwrite-mode IgnoreIfExists
