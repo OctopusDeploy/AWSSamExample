@@ -32,5 +32,4 @@ jobs:
     - name: Pack Application
       run: /opt/octo/Octo pack . --basePath hello_world --id AwsSamLambda --version $(cat /github/workspace/version.txt) --format zip
     - name: Push to Octopus
-      uses: docker://octopusdeploy/octo:latest
       run: /opt/octo/Octo push --server ${{ secrets.MATTC_URL }} --apiKey ${{ secrets.MATTC_API_KEY }} --package AwsSamLambda.$(cat /github/workspace/version.txt).zip --overwrite-mode IgnoreIfExists
