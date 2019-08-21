@@ -24,3 +24,4 @@ jobs:
         pip download -r requirements.txt
         unzip \*.whl
         rm *.whl
+        ls -la
