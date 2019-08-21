@@ -20,6 +20,7 @@ jobs:
     - name: Package dependencies
       run: |
         python -m pip install --upgrade pip
+        cd hello_world
         pip install -r requirements.txt
         unzip *.whl
         rm *.whl
