@@ -20,7 +20,7 @@ jobs:
         rm *.whl
         ls -la
     - name: Get Git Version
-      uses: docker://gittools/gitversion:5.0.2-linux-centos-7-netcoreapp2.2
+      uses: docker://gittools/gitversion:latest-netcoreapp2.1
       with:
         args: /github/workspace /nofetch
     - name: Pack Application
