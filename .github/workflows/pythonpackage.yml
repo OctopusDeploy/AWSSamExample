@@ -10,7 +10,7 @@ jobs:
     - name: Get Git Version
       uses: docker://mcasperson/gitversion:5.0.2-linux-centos-7-netcoreapp2.2
       with:
-        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo `$GitVersion_MajorMinorPatch > /github/workspace/version.txt\""
+        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_MajorMinorPatch > /github/workspace/version.txt\""
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
