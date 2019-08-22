@@ -53,7 +53,8 @@ jobs:
         --basePath /home/runner/work/AWSSamExample/AWSSamExample
         --id AwsSamLambdaTemplates
         --version $(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt)
-        --include *.yaml
+        --include s3bucket.yaml
+        --include template.yaml
         --format zip
     - name: Push to Octopus
       run: >-
