@@ -46,3 +46,20 @@ jobs:
         --package /home/runner/work/AWSSamExample/AWSSamExample/AwsSamLambda.$(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt).zip
         --overwrite-mode IgnoreIfExists
         --space Lambda
+    - name: Pack Application
+      run: >-
+        /opt/octo/Octo pack .
+        --outFolder /home/runner/work/AWSSamExample/AWSSamExample
+        --basePath /home/runner/work/AWSSamExample/AWSSamExample
+        --include template.yaml
+        --id AwsSamLambdaTemplate
+        --version $(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt)
+        --format zip
+    - name: Push to Octopus
+      run: >-
+        /opt/octo/Octo push
+        --server ${{ secrets.MATTC_URL }}
+        --apiKey ${{ secrets.MATTC_API_KEY }}
+        --package /home/runner/work/AWSSamExample/AWSSamExample/AwsSamLambdaTemplate.$(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt).zip
+        --overwrite-mode IgnoreIfExists
+        --space Lambda
