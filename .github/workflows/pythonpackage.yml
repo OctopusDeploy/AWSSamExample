@@ -35,7 +35,7 @@ jobs:
         chmod +x /opt/octo/Octo
     - name: Pack Application
       run: >-
-        cd /home/runner/work/AWSSamExample/AWSSamExample/hello_world
+        cd /home/runner/work/AWSSamExample/AWSSamExample/hello_world &&
         zip
         -r /home/runner/work/AWSSamExample/AWSSamExample/AwsSamLambda.$(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt).zip
         *
