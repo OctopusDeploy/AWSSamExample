@@ -50,7 +50,7 @@ jobs:
       run: >-
         /opt/octo/Octo pack
         --outFolder /home/runner/work/AWSSamExample/AWSSamExample
-        --basePath /home/runner/work/AWSSamExample/AWSSamExample/hello_world
+        --basePath /home/runner/work/AWSSamExample/AWSSamExample
         --id AwsSamLambdaTemplates
         --version $(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt)
         --include *.yaml
