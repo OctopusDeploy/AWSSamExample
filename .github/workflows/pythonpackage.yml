@@ -32,11 +32,9 @@ jobs:
         chmod +x /opt/octo/Octo
     - name: Pack Application
       run: >-
-        /opt/octo/Octo pack
+        /opt/octo/Octo pack .
         --outFolder /home/runner/work/AWSSamExample/AWSSamExample
         --basePath /home/runner/work/AWSSamExample/AWSSamExample
-        --include template.yaml
-        --include hello_world/**/*
         --id AwsSamLambda
         --version $(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt)
         --format zip
