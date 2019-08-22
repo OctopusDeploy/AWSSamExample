@@ -11,7 +11,7 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: #{S3File}
+      CodeUri: "s3://#{Octopus.Action[Upload Lambda to S3].Aws.S3.BucketName}/#{Octopus.Action[Upload Lambda to S3].Output.Package.FileName}"
       Handler: app.lambda_handler
       Runtime: python3.7
       Events:
