@@ -4,6 +4,8 @@ Description: Example SAM application
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
+  Api:
+    OpenApiVersion: '2.0'
   Function:
     Timeout: 3
 
