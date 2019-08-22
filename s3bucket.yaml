@@ -4,7 +4,7 @@ Resources:
   CodeBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: octopus-sam-demo-2
+      BucketName: "#{S3BucketName}"
       AccessControl: Private
       VersioningConfiguration:
         Status: Enabled
