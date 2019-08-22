@@ -36,7 +36,7 @@ jobs:
         --outFolder /home/runner/work/AWSSamExample/AWSSamExample
         --basePath /home/runner/work/AWSSamExample/AWSSamExample
         --include template.yaml
-        --include /hello_world/**
+        --include hello_world/**/*
         --id AwsSamLambda
         --version $(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt)
         --format zip
