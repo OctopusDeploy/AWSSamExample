@@ -16,13 +16,16 @@ jobs:
       with:
         python-version: 3.7
     - name: Package dependencies
+      # Permissions are documented at
+      # https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html
       run: |
         python -m pip install --upgrade pip
         cd hello_world
         pip download -r requirements.txt
         unzip \*.whl
         rm *.whl
-        ls -la
+        chmod 644 $(find . -type f)
+        chmod 755 $(find . -type d)
     - name: Extract Octopus Tools
       run: |
         mkdir /opt/octo
