@@ -45,3 +45,4 @@ jobs:
         --apiKey ${{ secrets.MATTC_API_KEY }}
         --package /home/runner/work/AWSSamExample/AWSSamExample/AwsSamLambda.$(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt).zip
         --overwrite-mode IgnoreIfExists
+        --space Lambda
