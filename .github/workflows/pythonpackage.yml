@@ -34,11 +34,9 @@ jobs:
         unzip /opt/octo/octopus.zip
         chmod +x /opt/octo/Octo
     - name: Pack Application
-      run: >-
-        cd /home/runner/work/AWSSamExample/AWSSamExample/hello_world &&
-        zip
-        -r /home/runner/work/AWSSamExample/AWSSamExample/AwsSamLambda.$(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt).zip
-        *
+      run: |
+        cd /home/runner/work/AWSSamExample/AWSSamExample/hello_world
+        zip -r /home/runner/work/AWSSamExample/AWSSamExample/AwsSamLambda.$(cat /home/runner/work/AWSSamExample/AWSSamExample/version.txt).zip *
     - name: Push to Octopus
       run: >-
         /opt/octo/Octo push
